@@ -2,13 +2,13 @@
 
 ## Verified GitHub Actions result
 
-On 2026-09-28, [this workflow run](https://github.com/kalpanaiitm/enterprise-ai-operations-agen/actions/runs/36453221015) completed successfully:
+On 2026-09-28, [this workflow run](https://github.com/kalpanaiitm/enterprise-ai-operations-agen/actions/runs/36454085091) completed successfully:
 
-- `python -m pytest -q`: **6 passed in 1.63s**.
+- `python -m pytest -q`: **10 tests passed**.
 - `python -m evals.run_eval`: **category 4/4; retrieval expectations 4/4**.
 
-Tests cover scoped and zero-result retrieval, LangGraph interrupt/resume, approval and rejection, API validation, sensitive classification, duplicate review, and the fixed evaluation cases. All inputs and knowledge articles are original fictional examples; CI makes no model API calls.
+The suite covers scoped and zero-result retrieval, LangGraph interrupt/resume, approval and rejection, API validation, sensitive classification, duplicate review, mocked model success, unsafe model output fallback, sensitive-ticket model bypass and provider failure. All tickets and knowledge articles are original fictional examples. Tests make no paid model calls.
 
 ## Limits
 
-Four curated cases are a smoke evaluation, not a benchmark of real ticket performance. The optional OpenAI draft, production deployment, latency, cost, and real-world retrieval quality are unmeasured. A green workflow does not establish production readiness.
+The four curated evaluation cases are a smoke check, not a benchmark of real support tickets. The optional OpenAI route is tested with mocks, not a real provider call. Deployed behaviour, latency, actual API cost and real-world retrieval quality remain unmeasured. A green workflow does not establish production readiness.
