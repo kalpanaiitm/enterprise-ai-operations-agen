@@ -1,0 +1,20 @@
+[
+  {
+    "id": "KB-ACCOUNT-01",
+    "category": "account",
+    "title": "Account access",
+    "text": "Use the approved account recovery page to request a reset link. Never share a password or one-time code with support staff."
+  },
+  {
+    "id": "KB-NETWORK-01",
+    "category": "network",
+    "title": "VPN connection",
+    "text": "Check the VPN status page and confirm that the client is up to date. If the connection still fails, record the error code for the support team."
+  },
+  {
+    "id": "KB-SOFTWARE-01",
+    "category": "software",
+    "title": "Software update",
+    "text": "Check the approved software catalogue for the latest version. Save work before installing an update and contact support if installation fails."
+  }
+]

@@ -1,8 +1,11 @@
 # Architecture
 
-Concept only; no implemented service or agent workflow.
+```text
+FastAPI ticket → classify → scoped TF-IDF retrieval → draft → LangGraph interrupt
+                                     ↓                         ↓
+                        fictional local articles      human approve/edit/reject
+```
 
-The README names the runnable entry point. Components should keep validation separate from the core operation and presentation. The existing code is the source of truth; this page does not claim planned capabilities as implemented.
+`support_agent/knowledge.py` owns the immutable corpus and scores. `workflow.py` owns typed graph state, optional model draft, checkpointed interrupt and review status. `api.py` validates inputs and resumes the graph using the same thread ID. The API returns drafts but has no send endpoint or external side-effect tool.
 
-## Failure and privacy boundaries
-README is a proposal; LangGraph, RAG, API, evaluation and monitoring are not implemented. Use non-sensitive or permitted inputs for demos. Do not commit user documents, audio, credentials, or generated outputs.
+The model is optional. The graph still runs and pauses with deterministic drafting when no model is configured. Failure of a model call falls back to deterministic drafting; this does not certify the answer as accurate. `InMemorySaver` is a local demonstration checkpoint and is lost on process restart. No PII or coursework data belongs in examples.

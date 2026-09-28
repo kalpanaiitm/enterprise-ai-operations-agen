@@ -1,16 +1,29 @@
-# Enterprise AI Operations Agent — concept placeholder
+# IT Support Operations Agent — fictional portfolio demo
 
-This repository currently contains a project concept only; it is **not a completed or production-ready application**.
+A small **LangGraph support-ticket workflow** with scoped retrieval, an optional OpenAI draft, and a mandatory human review interrupt. All tickets and knowledge articles in the examples are fictional and original to this repository. This is independent of coursework.
 
-The proposed scope includes LangGraph orchestration, retrieval-augmented generation, tool calling, a FastAPI service, evaluation, observability and human review. Those capabilities should not be treated as implemented until the repository contains working code, tests, setup instructions and evaluation evidence.
+## What is implemented
 
-For completed portfolio work, see:
+1. Accept a fictional ticket through FastAPI.
+2. Classify account, network, software, or unknown issues with deterministic rules.
+3. Retrieve matching articles from a three-document local TF-IDF knowledge base. Zero-score articles are excluded.
+4. Draft a suggested answer. By default this is a deterministic, source-linked template. If both `OPENAI_MODEL` and `OPENAI_API_KEY` are set, the OpenAI Responses API is used for one draft call; a missing citation or API failure falls back to the template.
+5. Pause at a LangGraph `interrupt()` for a human to approve, edit, or reject. The API **never sends** the response to anyone.
 
-- [Job Evidence Mapper](https://github.com/kalpanaiitm/job-evidence-mapper)
-- [STEMSpark Event Planner](https://github.com/kalpanaiitm/stemspark-event-planner)
-- [RareEarthRAG](https://github.com/kalpanaiitm/RareEarthRAG)
-- [StemSplit AI](https://github.com/kalpanaiitm/stemsplit-ai)
+## Run locally
 
-## Engineering evidence
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn support_agent.api:app --host 127.0.0.1 --port 8000
+python -m pytest -q
+```
 
-See [project blueprint](PROJECT_BLUEPRINT.md), [architecture](ARCHITECTURE.md), [test report](TEST_REPORT.md) and [changelog](CHANGELOG.md) for implemented scope, verification and next milestones. These documents follow the human-controlled App Development Playbook; planned features are not represented as implemented.
+Open http://127.0.0.1:8000/docs and submit a ticket such as `My VPN connection is failing`. The POST returns a `ticket_id` and `pending_review`; use `POST /tickets/{ticket_id}/review` with `{"approved":true,"edited_response":"Reviewed guidance."}` to resume. `GET /tickets/{ticket_id}` displays the current state.
+
+The default runs without an API key. For an **optional paid model call**, set `OPENAI_MODEL` to a model available in your account and `OPENAI_API_KEY` locally. Never commit a key. Use synthetic tickets only.
+
+## Engineering evidence and limits
+
+See [blueprint](PROJECT_BLUEPRINT.md), [architecture](ARCHITECTURE.md), [tests](TEST_REPORT.md), and [changelog](CHANGELOG.md). The in-memory checkpoint is lost on restart; this local demo has no authentication, durable audit store, production monitoring, or delivery integration. TF-IDF and rule classification can miss paraphrases. An LLM citation check does **not** prove full grounding. A human must verify every draft, especially sensitive tickets. Do not deploy this demo as a public support service.
