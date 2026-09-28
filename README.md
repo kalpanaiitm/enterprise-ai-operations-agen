@@ -22,7 +22,7 @@ python -m pytest -q
 
 Open http://127.0.0.1:8000/docs and submit a ticket such as `My VPN connection is failing`. The POST returns a `ticket_id` and `pending_review`; use `POST /tickets/{ticket_id}/review` with `{"approved":true,"edited_response":"Reviewed guidance."}` to resume. `GET /tickets/{ticket_id}` displays the current state.
 
-The default runs without an API key. For an **optional paid model call**, set `OPENAI_MODEL` to a model available in your account and `OPENAI_API_KEY` locally. Never commit a key. Use synthetic tickets only.
+The fixed fictional evaluation set is in `evals/cases.json`; run `python -m evals.run_eval` to inspect its category and retrieval results. The default runs without an API key. For an **optional paid model call**, set `OPENAI_MODEL` to a model available in your account and `OPENAI_API_KEY` locally. Never commit a key. Use synthetic tickets only.
 
 ## Engineering evidence and limits
 

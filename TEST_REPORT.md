@@ -1,9 +1,14 @@
 # Test report
 
-## Automated workflow
+## Verified GitHub Actions result
 
-On 2026-09-28, the first GitHub Actions run passed **5 tests** for scoped retrieval, zero matches, LangGraph interrupt/resume, approval, rejection, input validation, sensitive classification and duplicate review. [See that run](https://github.com/kalpanaiitm/enterprise-ai-operations-agen/actions/runs/36453004669).
+On 2026-09-28, [this workflow run](https://github.com/kalpanaiitm/enterprise-ai-operations-agen/actions/runs/36453221015) completed successfully:
 
-The fixed `evals/cases.json` set now contains four fictional ticket/category/retrieval expectations. Its results are pending the next workflow run. This small set is a reproducible smoke evaluation, not a measure of performance on real support tickets.
+- `python -m pytest -q`: **6 passed in 1.63s**.
+- `python -m evals.run_eval`: **category 4/4; retrieval expectations 4/4**.
 
-The optional OpenAI route, deployed environment, latency, cost, and real-world retrieval quality remain unevaluated. A green workflow does not establish production readiness.
+Tests cover scoped and zero-result retrieval, LangGraph interrupt/resume, approval and rejection, API validation, sensitive classification, duplicate review, and the fixed evaluation cases. All inputs and knowledge articles are original fictional examples; CI makes no model API calls.
+
+## Limits
+
+Four curated cases are a smoke evaluation, not a benchmark of real ticket performance. The optional OpenAI draft, production deployment, latency, cost, and real-world retrieval quality are unmeasured. A green workflow does not establish production readiness.
