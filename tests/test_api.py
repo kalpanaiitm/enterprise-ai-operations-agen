@@ -24,4 +24,5 @@ def test_validation_and_sensitive_routing(monkeypatch):
     assert client.post("/tickets", json={"text": "short"}).status_code == 422
     body = client.post("/tickets", json={"text": "I suspect a phishing login message"}).json()
     assert body["sensitive"] is True
+    assert body["needs_escalation"] is True
     assert body["status"] == "pending_review"

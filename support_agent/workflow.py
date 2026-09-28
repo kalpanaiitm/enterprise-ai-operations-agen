@@ -1,5 +1,6 @@
 """LangGraph ticket workflow with an explicit, resumable human review gate."""
 import os
+import re
 from typing import TypedDict
 
 from langgraph.checkpoint.memory import InMemorySaver
@@ -56,12 +57,14 @@ def _template(state: TicketState) -> str:
 def _llm_draft(state: TicketState) -> str | None:
     """Optional, cost-incurring draft; no model call unless both variables are set."""
     model = os.getenv("OPENAI_MODEL")
-    if not model or not os.getenv("OPENAI_API_KEY") or not state["evidence"]:
+    if not model or not os.getenv("OPENAI_API_KEY") or not state["evidence"] or state["sensitive"]:
         return None
     from openai import OpenAI
     sources = "\n".join(f'{d["id"]}: {d["text"]}' for d in state["evidence"])
-    response = OpenAI().responses.create(
+    response = OpenAI(max_retries=0, timeout=20.0).responses.create(
         model=model,
+        max_output_tokens=250,
+        store=False,
         input=[
             {"role": "system", "content": (
                 "Draft a short IT support response using only the supplied fictional articles. "
@@ -73,8 +76,19 @@ def _llm_draft(state: TicketState) -> str | None:
         ],
     )
     draft = response.output_text.strip()
-    valid_ids = [d["id"] for d in state["evidence"]]
-    return draft if draft and any("[" + doc_id + "]" in draft for doc_id in valid_ids) else None
+    valid_ids = {d["id"] for d in state["evidence"]}
+    cited_ids = set(re.findall(r"\[(KB-[A-Z]+-\d+)\]", draft))
+    unsafe_request = re.search(
+        r"\b(?:send|share|provide|reply with|tell us)\s+(?:your\s+)?(?:password|one-time code|otp)\b",
+        draft, re.IGNORECASE,
+    )
+    unsupported_action = re.search(
+        r"\b(?:I|we)\s+(?:have\s+)?(?:reset|changed|installed|fixed|resolved)\b",
+        draft, re.IGNORECASE,
+    )
+    if not draft or not cited_ids or not cited_ids <= valid_ids or unsafe_request or unsupported_action:
+        return None
+    return draft
 
 
 def draft(state: TicketState) -> dict:

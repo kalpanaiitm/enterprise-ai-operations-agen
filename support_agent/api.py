@@ -38,6 +38,7 @@ def _view(ticket_id: str) -> dict:
         "status": state.get("status", "pending_review" if snapshot.next else "unknown"),
         "category": state.get("category"),
         "sensitive": state.get("sensitive"),
+        "needs_escalation": bool(state.get("sensitive") or not state.get("evidence")),
         "evidence": state.get("evidence", []),
         "draft": state.get("draft"),
         "model_used": state.get("model_used"),

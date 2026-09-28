@@ -13,7 +13,7 @@ LangGraph supplies checkpointed state and interrupt/resume. scikit-learn supplie
 Only `data/knowledge.json` is eligible retrieval evidence. Its articles are fictional; their content is not real corporate policy. Unknown queries have an explicit no-evidence path.
 
 ## Guardrails and cost
-Ticket content is data, not a tool command. No secrets in the repo. Model calls are disabled by default; optional draft generation costs one configured OpenAI call per ticket with evidence. All outcomes require human review. The process stores checkpoints only in memory; logs should avoid ticket text.
+Ticket content is data, not a tool command. No secrets in the repo. Model calls are disabled by default; optional draft generation costs at most one configured OpenAI call per non-sensitive ticket with evidence, capped at 250 output tokens. There is no monthly spend control. All outcomes require human review. The process stores checkpoints only in memory; logs should avoid ticket text.
 
 ## Acceptance
 A related ticket returns a source ID; an unrelated ticket returns no evidence; sensitive tickets are flagged; every ticket pauses; review resumes once; a second review is rejected; no message is sent. CI must pass before claiming verification.
