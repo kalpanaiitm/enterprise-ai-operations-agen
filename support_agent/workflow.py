@@ -24,14 +24,20 @@ class TicketState(TypedDict, total=False):
 
 def classify(state: TicketState) -> dict:
     text = state["ticket"].lower()
-    sensitive = any(term in text for term in (
-        "password", "credential", "security", "phishing", "breach", "payment", "billing"
-    ))
-    if any(term in text for term in ("vpn", "wifi", "wi-fi", "network", "connection")):
+    def contains(*terms: str) -> bool:
+        return any(re.search(r"\b" + re.escape(term) + r"\b", text) for term in terms)
+
+    sensitive = contains(
+        "password", "credential", "credentials", "security", "phishing", "breach",
+        "payment", "billing", "refund", "salary", "one-time code", "mfa", "verification code", "stolen",
+    )
+    if contains("vpn", "wifi", "wi-fi", "wireless", "network", "connection", "internet", "remote access"):
         category = "network"
-    elif any(term in text for term in ("login", "sign in", "account", "password")):
+    elif contains("login", "sign in", "sign-in", "account", "password", "credentials",
+                  "one-time code", "mfa", "verification code", "user profile"):
         category = "account"
-    elif any(term in text for term in ("app", "software", "install", "update")):
+    elif contains("app", "application", "software", "install", "installation", "update",
+                  "updating", "program", "catalogue", "version"):
         category = "software"
     else:
         category = "unknown"

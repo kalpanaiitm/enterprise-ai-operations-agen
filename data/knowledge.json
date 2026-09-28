@@ -16,5 +16,23 @@
     "category": "software",
     "title": "Software update",
     "text": "Check the approved software catalogue for the latest version. Save work before installing an update and contact support if installation fails."
+  },
+  {
+    "id": "KB-NETWORK-02",
+    "category": "network",
+    "title": "Office Wi-Fi and wireless connectivity",
+    "text": "For intermittent office Wi-Fi or wireless internet, confirm the device is connected to the approved network and note when disconnections occur. Contact support with the connection symptoms; do not change network security settings."
+  },
+  {
+    "id": "KB-ACCOUNT-02",
+    "category": "account",
+    "title": "MFA and sign-in verification",
+    "text": "If a one-time code or MFA verification fails, use the approved sign-in recovery page and contact support. Never share a verification code or password with anyone."
+  },
+  {
+    "id": "KB-SOFTWARE-02",
+    "category": "software",
+    "title": "App crashes or freezes",
+    "text": "When an approved application crashes, freezes, or will not launch, record its version and any error message. Save work if possible and contact support; do not install an unapproved replacement."
   }
 ]

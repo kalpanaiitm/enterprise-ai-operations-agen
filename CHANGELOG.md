@@ -11,3 +11,7 @@ Added four fictional cases for deterministic category and retrieval expectations
 ## 2026-09-28 — Model boundary checks
 
 Added mocked model success, unsafe output, sensitive-ticket bypass, and provider-failure tests. Restricted cited IDs to retrieved articles and bounded optional calls to 250 output tokens, with no automatic retries or response storage. The model quality and actual API cost remain unmeasured.
+
+## 2026-09-28 — Expanded fictional evaluation
+
+Added 60 authored fictional tickets, three narrowly scoped articles for Wi-Fi, MFA, and app crashes, category phrase and word-boundary checks, separate evidence-hit and abstention measures, sensitive-flag recall, and a CI regression floor. Reported nine false article matches instead of treating lexical overlap as validated relevance. No coursework material is used.

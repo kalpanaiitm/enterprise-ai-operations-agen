@@ -19,4 +19,4 @@ Ticket content is data, not a tool command. No secrets in the repo. Model calls 
 A related ticket returns a source ID; an unrelated ticket returns no evidence; sensitive tickets are flagged; every ticket pauses; review resumes once; a second review is rejected; no message is sent. CI must pass before claiming verification.
 
 ## Out of scope
-Real enterprise systems, external integrations, durable persistence, authentication, quantitative retrieval evaluation, production deployment, and autonomous ticket resolution.
+Real enterprise systems, external integrations, durable persistence, authentication, production deployment, and autonomous ticket resolution.
