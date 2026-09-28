@@ -10,3 +10,7 @@ For completed portfolio work, see:
 - [STEMSpark Event Planner](https://github.com/kalpanaiitm/stemspark-event-planner)
 - [RareEarthRAG](https://github.com/kalpanaiitm/RareEarthRAG)
 - [StemSplit AI](https://github.com/kalpanaiitm/stemsplit-ai)
+
+## Engineering evidence
+
+See [project blueprint](PROJECT_BLUEPRINT.md), [architecture](ARCHITECTURE.md), [test report](TEST_REPORT.md) and [changelog](CHANGELOG.md) for implemented scope, verification and next milestones. These documents follow the human-controlled App Development Playbook; planned features are not represented as implemented.
