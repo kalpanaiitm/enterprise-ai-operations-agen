@@ -11,3 +11,4 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: OPENAI_MODEL= python -m pytest -q
+      - run: OPENAI_MODEL= python -m evals.run_eval

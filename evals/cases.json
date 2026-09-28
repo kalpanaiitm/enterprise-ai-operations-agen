@@ -1,0 +1,22 @@
+[
+  {
+    "ticket": "My VPN connection fails after the update",
+    "category": "network",
+    "expected_id": "KB-NETWORK-01"
+  },
+  {
+    "ticket": "I need a password reset for my account",
+    "category": "account",
+    "expected_id": "KB-ACCOUNT-01"
+  },
+  {
+    "ticket": "The software update will not install",
+    "category": "software",
+    "expected_id": "KB-SOFTWARE-01"
+  },
+  {
+    "ticket": "Galactic banana issue",
+    "category": "unknown",
+    "expected_id": null
+  }
+]
