@@ -23,3 +23,7 @@ Added article-specific scope checks so broad lexical overlap does not automatica
 ## 2026-09-28 — Offline product evaluation
 
 Added 14 original fictional workflow cases with authored expected escalation, evidence and draft excerpts. The runner uses the actual paused LangGraph workflow with model calls disabled, reports decisions and source checks separately, and runs in CI. It is not an LLM judge or a human assessment of response quality.
+
+## 2026-09-28 — Local Streamlit interface
+
+Added a browser interface for submitting fictional tickets, seeing scoped article evidence and draft text, reviewing or rejecting the draft, and running the authored offline evaluations. The interface uses the existing graph and keeps checkpoints in browser-session memory; it has no outbound send integration.

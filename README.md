@@ -10,6 +10,17 @@ A small **LangGraph support-ticket workflow** with scoped retrieval, an optional
 4. Draft a suggested answer. By default this is a deterministic, source-linked template. If both `OPENAI_MODEL` and `OPENAI_API_KEY` are set, the OpenAI Responses API is used for one draft call on a non-sensitive ticket with evidence. The call has a 250-token output limit and no retries or response storage. Missing or unknown citations, selected unsafe language, or API failure fall back to the template.
 5. Pause at a LangGraph `interrupt()` for a human to approve, edit, or reject. The API **never sends** the response to anyone.
 
+## Streamlit browser demo
+
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+pip install -r requirements-ui.txt
+streamlit run ui/app.py
+```
+
+Use the **Try a ticket** tab to submit a fictional request, inspect the suggested article and draft, then approve, edit or reject it. The **Evaluation** tab runs the authored offline checks in your browser. Streamlit is a local interface, while “offline evaluation” means no model API call is needed for repeatable checks. The UI shares the same LangGraph workflow as FastAPI. Each browser session keeps its own in-memory graph; restarting the app loses tickets. Do not expose this unauthenticated demo publicly.
+
 ## Run locally
 
 ```bash
