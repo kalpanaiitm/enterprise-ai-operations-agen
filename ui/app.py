@@ -1,6 +1,9 @@
 """Local browser demo for fictional tickets; no outbound sending."""
 import uuid
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import streamlit as st
 from langgraph.types import Command
