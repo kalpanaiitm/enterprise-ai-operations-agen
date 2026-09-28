@@ -19,3 +19,7 @@ Added 60 authored fictional tickets, three narrowly scoped articles for Wi-Fi, M
 ## 2026-09-28 — Relevance and incident triage refinement
 
 Added article-specific scope checks so broad lexical overlap does not automatically become evidence. Compromise reports now abstain from generic recovery articles and remain behind human review. Added 16 further fictional challenge tickets, including security negatives, and documented the fact that both authored sets were inspected during development.
+
+## 2026-09-28 — Offline product evaluation
+
+Added 14 original fictional workflow cases with authored expected escalation, evidence and draft excerpts. The runner uses the actual paused LangGraph workflow with model calls disabled, reports decisions and source checks separately, and runs in CI. It is not an LLM judge or a human assessment of response quality.
