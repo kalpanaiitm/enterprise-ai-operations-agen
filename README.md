@@ -12,6 +12,8 @@ A small **LangGraph support-ticket workflow** with scoped retrieval, an optional
 
 ## Streamlit browser demo
 
+**[Open the live fictional demo](https://enterprise-ai-operations-agent.streamlit.app/)**. The hosted app was verified with ticket submission, review rejection and evaluation results. It has no API key configured, so drafts use the deterministic template. Only enter fictional information; this public demo has no authentication or durable storage.
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
@@ -19,7 +21,7 @@ pip install -r requirements-ui.txt
 streamlit run ui/app.py
 ```
 
-Use the **Try a ticket** tab to submit a fictional request, inspect the suggested article and draft, then approve, edit or reject it. The **Evaluation** tab runs the authored offline checks in your browser. Streamlit is a local interface, while “offline evaluation” means no model API call is needed for repeatable checks. The UI shares the same LangGraph workflow as FastAPI. Each browser session keeps its own in-memory graph; restarting the app loses tickets. Do not expose this unauthenticated demo publicly.
+Use the **Try a ticket** tab to submit a fictional request, inspect the suggested article and draft, then approve, edit or reject it. The **Evaluation** tab runs the authored offline checks in your browser. Streamlit is a local interface, while “offline evaluation” means no model API call is needed for repeatable checks. The UI shares the same LangGraph workflow as FastAPI. Each browser session keeps its own in-memory graph; restarting the app loses tickets. Do not enter real customer data or secrets in this public demo.
 
 ## Run locally
 

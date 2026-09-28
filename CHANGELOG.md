@@ -27,3 +27,7 @@ Added 14 original fictional workflow cases with authored expected escalation, ev
 ## 2026-09-28 — Local Streamlit interface
 
 Added a browser interface for submitting fictional tickets, seeing scoped article evidence and draft text, reviewing or rejecting the draft, and running the authored offline evaluations. The interface uses the existing graph and keeps checkpoints in browser-session memory; it has no outbound send integration.
+
+## 2026-09-28 — Streamlit Community Cloud deployment
+
+Deployed the fictional Streamlit demo, fixed hosted entrypoint imports, and verified ticket submission, review rejection and on-page evaluations. The deployment has no model API key and does not persist tickets.
