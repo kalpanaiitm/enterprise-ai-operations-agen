@@ -1,16 +1,16 @@
 # Test report
 
-## Local verification — 2026-09-28
+## Verification — 2026-09-28
 
-`python -m pytest -q`: **10 passed**. `python -m evals.run_eval` on 60 original fictional tickets:
+`python -m pytest -q`: **12 passed locally**. The default evaluation makes no external model calls.
 
-| Measure | Result |
-| --- | ---: |
-| Category accuracy | 60/60 |
-| Expected article present, where one applies | 34/34 |
-| No article returned, where none applies | 17/26 |
-| Sensitive ticket detection recall | 10/10 |
+| Measure | 60-case development set | 16-case challenge set |
+| --- | ---: | ---: |
+| Category accuracy | 60/60 | 16/16 |
+| Expected article present, where one applies | 34/34 | 6/6 |
+| No article returned, where none applies | 26/26 | 10/10 |
+| Sensitive ticket detection recall | 10/10 | 4/4 |
 
-The nine false article matches are T04, T07, T09, T15, T25, T26, T35, T38, and T43. They include broad network, account, and software requests that share words with an article but are not addressed by its instructions. Retrieval currently accepts any positive TF-IDF score, and does not reliably abstain on such queries. The case labels and six articles are fictional, authored for this repository; these are in-sample checks and not real-world performance estimates. The optional OpenAI draft, actual API cost, latency, and production deployment are unmeasured. A human must decide whether any retrieved article applies.
+The first implementation returned irrelevant articles on nine development cases. Article scope checks removed those matches. The challenge set then exposed two compromise reports (C13 and C14) receiving generic recovery guidance; an explicit compromise abstention rule removed those matches. Two development labels were also corrected after review: T38 has relevant approved-version guidance, while T44's generic slowness has no relevant crash guidance. Both sets were authored here, inspected and used during development. They are **not blinded, independent performance estimates**. Exact results should not be extrapolated to real tickets. In particular, keyword rules can miss new compromise phrasing, and relevance of a returned article still needs a human reviewer.
 
-A prior four-case smoke evaluation and [GitHub Actions run](https://github.com/kalpanaiitm/enterprise-ai-operations-agen/actions/runs/36454190246) passed before this expansion. The expanded evaluation's CI status should be checked on the current commit.
+The optional OpenAI draft, actual API cost, latency, deployment, and real-world routing are unmeasured. A [prior GitHub Actions run](https://github.com/kalpanaiitm/enterprise-ai-operations-agen/actions/runs/36455663287) passed before the scope refinement. Check Actions for the latest commit's CI result.

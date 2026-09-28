@@ -1,5 +1,6 @@
 """Deterministic evaluation on original fictional tickets; no external model call."""
 import json
+import argparse
 from collections import defaultdict
 from pathlib import Path
 
@@ -7,8 +8,8 @@ from support_agent.knowledge import search
 from support_agent.workflow import classify
 
 
-def run() -> dict:
-    cases = json.loads((Path(__file__).parent / "cases.json").read_text())
+def run(cases_path: Path | None = None) -> dict:
+    cases = json.loads((cases_path or Path(__file__).parent / "cases.json").read_text())
     rows = []
     by_tag = defaultdict(lambda: {"count": 0, "category_correct": 0, "evidence_correct": 0})
     for case in cases:
@@ -44,7 +45,9 @@ def run() -> dict:
 
 
 if __name__ == "__main__":
-    result = run()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--cases", type=Path, default=Path(__file__).parent / "cases.json")
+    result = run(parser.parse_args().cases)
     for label, numerator, denominator in (
         ("Category", result["category_correct"], result["cases"]),
         ("Evidence hit", result["evidence_hits"], result["evidence_cases"]),

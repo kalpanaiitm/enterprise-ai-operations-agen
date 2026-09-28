@@ -15,3 +15,7 @@ Added mocked model success, unsafe output, sensitive-ticket bypass, and provider
 ## 2026-09-28 — Expanded fictional evaluation
 
 Added 60 authored fictional tickets, three narrowly scoped articles for Wi-Fi, MFA, and app crashes, category phrase and word-boundary checks, separate evidence-hit and abstention measures, sensitive-flag recall, and a CI regression floor. Reported nine false article matches instead of treating lexical overlap as validated relevance. No coursework material is used.
+
+## 2026-09-28 — Relevance and incident triage refinement
+
+Added article-specific scope checks so broad lexical overlap does not automatically become evidence. Compromise reports now abstain from generic recovery articles and remain behind human review. Added 16 further fictional challenge tickets, including security negatives, and documented the fact that both authored sets were inspected during development.

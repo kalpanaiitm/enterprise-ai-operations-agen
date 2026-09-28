@@ -36,6 +36,16 @@ def test_unknown_ticket_still_requires_review(monkeypatch):
     assert final["final_response"] == ""
 
 
+def test_compromised_credentials_have_no_generic_recovery_evidence(monkeypatch):
+    monkeypatch.delenv("OPENAI_MODEL", raising=False)
+    graph = create_graph()
+    result = graph.invoke({"ticket": "My password was leaked"},
+                          {"configurable": {"thread_id": "compromise-test"}})
+    assert result["sensitive"] is True
+    assert result["evidence"] == []
+    assert result["__interrupt__"][0].value["needs_escalation"] is True
+
+
 def test_model_draft_accepts_only_known_citations(monkeypatch):
     import openai
 

@@ -1,0 +1,130 @@
+[
+  {
+    "id": "C01",
+    "ticket": "The VPN handshake is rejected",
+    "category": "network",
+    "expected_id": "KB-NETWORK-01",
+    "sensitive": false,
+    "tag": "challenge"
+  },
+  {
+    "id": "C02",
+    "ticket": "Office Wi-Fi disconnects after sleep",
+    "category": "network",
+    "expected_id": "KB-NETWORK-02",
+    "sensitive": false,
+    "tag": "challenge"
+  },
+  {
+    "id": "C03",
+    "ticket": "Ethernet cable is broken",
+    "category": "unknown",
+    "expected_id": null,
+    "sensitive": false,
+    "tag": "challenge"
+  },
+  {
+    "id": "C04",
+    "ticket": "Remote access is unavailable",
+    "category": "network",
+    "expected_id": null,
+    "sensitive": false,
+    "tag": "challenge"
+  },
+  {
+    "id": "C05",
+    "ticket": "Password reset link has expired",
+    "category": "account",
+    "expected_id": "KB-ACCOUNT-01",
+    "sensitive": true,
+    "tag": "challenge"
+  },
+  {
+    "id": "C06",
+    "ticket": "Authenticator app gives the wrong MFA code",
+    "category": "account",
+    "expected_id": "KB-ACCOUNT-02",
+    "sensitive": true,
+    "tag": "challenge"
+  },
+  {
+    "id": "C07",
+    "ticket": "My sign-in page is blank",
+    "category": "account",
+    "expected_id": null,
+    "sensitive": false,
+    "tag": "challenge"
+  },
+  {
+    "id": "C08",
+    "ticket": "The login audit log needs export",
+    "category": "account",
+    "expected_id": null,
+    "sensitive": false,
+    "tag": "challenge"
+  },
+  {
+    "id": "C09",
+    "ticket": "The update installation fails",
+    "category": "software",
+    "expected_id": "KB-SOFTWARE-01",
+    "sensitive": false,
+    "tag": "challenge"
+  },
+  {
+    "id": "C10",
+    "ticket": "The application crashes at launch",
+    "category": "software",
+    "expected_id": "KB-SOFTWARE-02",
+    "sensitive": false,
+    "tag": "challenge"
+  },
+  {
+    "id": "C11",
+    "ticket": "How do I get a licence for the software?",
+    "category": "software",
+    "expected_id": null,
+    "sensitive": false,
+    "tag": "challenge"
+  },
+  {
+    "id": "C12",
+    "ticket": "The laptop screen flickers",
+    "category": "unknown",
+    "expected_id": null,
+    "sensitive": false,
+    "tag": "challenge"
+  },
+  {
+    "id": "C13",
+    "ticket": "My VPN credentials were stolen",
+    "category": "network",
+    "expected_id": null,
+    "sensitive": true,
+    "tag": "security"
+  },
+  {
+    "id": "C14",
+    "ticket": "My password was leaked",
+    "category": "account",
+    "expected_id": null,
+    "sensitive": true,
+    "tag": "security"
+  },
+  {
+    "id": "C15",
+    "ticket": "The software installed but shows a blank window",
+    "category": "software",
+    "expected_id": null,
+    "sensitive": false,
+    "tag": "ambiguous"
+  },
+  {
+    "id": "C16",
+    "ticket": "A printer needs a software driver",
+    "category": "software",
+    "expected_id": null,
+    "sensitive": false,
+    "tag": "out_of_scope"
+  }
+]

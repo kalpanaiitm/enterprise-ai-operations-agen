@@ -299,7 +299,7 @@
     "id": "T38",
     "ticket": "I cannot find the approved version of this tool",
     "category": "software",
-    "expected_id": null,
+    "expected_id": "KB-SOFTWARE-01",
     "sensitive": false,
     "tag": "paraphrase"
   },
@@ -347,7 +347,7 @@
     "id": "T44",
     "ticket": "My productivity application is slow",
     "category": "software",
-    "expected_id": "KB-SOFTWARE-02",
+    "expected_id": null,
     "sensitive": false,
     "tag": "paraphrase"
   },
